@@ -107,18 +107,18 @@ function celebrate() {
 }
 
 // make No move on hover sometimes (playful)
-noBtn.addEventListener('mouseenter', (e)=>{
-  // 60% chance to dash away
-  if (Math.random() < 0.6 && !teleporting) {
-    const rect = noBtn.getBoundingClientRect();
-    const parentRect = card.getBoundingClientRect();
-    const maxX = parentRect.width - rect.width - 16;
-    const maxY = parentRect.height - rect.height - 16;
-    const nx = Math.max(8, Math.random()*maxX);
-    const ny = Math.max(8, Math.random()*maxY);
-    noBtn.style.transform = `translate(${nx - rect.left + parentRect.left}px, ${ny - rect.top + parentRect.top}px)`;
-    setTimeout(()=> noBtn.style.transform = '', 380);
-  }
+noBtn.addEventListener('mouseenter', ()=>{
+  if (teleporting) return;
+
+  const rect = noBtn.getBoundingClientRect();
+  const parentRect = card.getBoundingClientRect();
+  const maxX = parentRect.width - rect.width - 16;
+  const maxY = parentRect.height - rect.height - 16;
+
+  const nx = Math.max(8, Math.random() * maxX);
+  const ny = Math.max(8, Math.random() * maxY);
+
+  noBtn.style.transform = `translate(${nx - rect.left + parentRect.left}px, ${ny - rect.top + parentRect.top}px)`;
 });
 
 // clicks
