@@ -1,0 +1,109 @@
+:root{
+  --card-bg: rgba(255,255,255,0.95);
+  --accent: #ff4d88;
+  --text: #222;
+  --soft: #ffeef6;
+}
+
+*{box-sizing:border-box}
+html,body,#app{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--text);
+  background: linear-gradient(135deg, #fff0f6 0%, #fff8f0 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* Scene styling changes dynamically via JS (backgrounds, images, etc.) */
+.scene{
+  width:100%;
+  height:100%;
+  transition:background 700ms ease;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  padding:32px;
+}
+
+/* Card */
+.card{
+  background:var(--card-bg);
+  padding:28px;
+  border-radius:16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  text-align:center;
+  max-width:460px;
+  width:100%;
+  transform-origin:center;
+  transition:transform 400ms cubic-bezier(.2,.9,.3,1);
+}
+
+.card h1{
+  margin:0 0 8px 0;
+  font-size:28px;
+  letter-spacing: -0.5px;
+}
+.card p{margin:0 0 18px 0;color:#666}
+
+.buttons{display:flex;gap:12px;justify-content:center;}
+.btn{
+  padding:12px 18px;
+  border-radius:10px;
+  border:0;
+  cursor:pointer;
+  font-size:16px;
+  transition:transform 160ms ease, box-shadow 160ms ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+.btn:active{transform:scale(.98)}
+
+.yes{
+  background:linear-gradient(90deg,var(--accent),#ff85a3);
+  color:white;
+}
+.no{
+  background:transparent;
+  border:1px solid #eee;
+  color:#444;
+}
+
+/* Overlay (teleporting + celebration) */
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.18);
+  backdrop-filter: blur(2px);
+  transition:opacity 220ms ease, visibility 220ms;
+}
+.overlay.hidden{opacity:0; visibility:hidden; pointer-events:none}
+.overlay-content{
+  background: rgba(255,255,255,0.98);
+  padding:26px 30px;
+  border-radius:14px;
+  font-weight:600;
+  box-shadow:0 8px 30px rgba(0,0,0,0.12);
+}
+
+/* Hearts animation for celebration (added by JS) */
+.hearts {
+  pointer-events:none;
+  position: absolute;
+  inset:0;
+  overflow:hidden;
+}
+
+/* small responsive tweaks */
+@media (max-width:480px){
+  .card{padding:20px}
+  .card h1{font-size:22px}
+  .buttons{flex-direction:column}
+  .btn{width:100%}
+}

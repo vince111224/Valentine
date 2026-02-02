@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Will you be my Valentine?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app" class="scene" aria-live="polite">
+    <div class="card" id="card" role="dialog" aria-label="Valentine question">
+      <h1 id="question">Will you be my valentine?</h1>
+      <p id="subtitle">Pick one</p>
+      <div class="buttons">
+        <button id="yesBtn" class="btn yes">Yes 💖</button>
+        <button id="noBtn" class="btn no">No 😢</button>
+      </div>
+    </div>
+
+    <!-- Overlay used for teleport animation / celebration -->
+    <div id="overlay" class="overlay hidden" aria-hidden="true">
+      <div id="overlayContent" class="overlay-content">Teleporting...</div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
